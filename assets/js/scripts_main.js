@@ -5,9 +5,17 @@ const sendButton = document.getElementById("send-button");
 const chatMessages = document.getElementById("chat-messages");
 const $flecha = document.getElementById("flecha");
 
+const arregloLocales = [
+  {
+    nombre: "Central Madeirense",
+    productos: [],
+  },
+  {},
+];
+
 const arregloRecetasPreCargadas = [
   {
-    cadena: "Receta0",
+    cadena: "Receta de Ejemplo",
     categoria: "Desayuno",
     enlace:
       "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
@@ -28,138 +36,28 @@ const arregloRecetasPreCargadas = [
     hierro: 5,
     potasio: 555,
   },
-  // {
-  //   cadena: "Receta1",
-  //   categoria: "Desayuno",
-  //   enlace:
-  //     "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
-  //   nombre: "Receta1",
-  //   imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
-  //   ingredientes:
-  //     "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
-  //   calorias: 5,
-  //   grasa: 5,
-  //   colesterol: 5,
-  //   sodio: 5,
-  //   carbohidratos: 5,
-  //   proteina: 5,
-  //   vitaminaA: 5,
-  //   vitaminaC: 5,
-  //   vitaminaD: 5,
-  //   calcio: 555,
-  //   hierro: 5,
-  //   potasio: 555,
-  // },
-  // {
-  //   cadena: "Receta2",
-  //   categoria: "Desayuno",
-  //   enlace:
-  //     "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
-  //   nombre: "Receta2",
-  //   imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
-  //   ingredientes:
-  //     "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
-  //   calorias: 5,
-  //   grasa: 5,
-  //   colesterol: 5,
-  //   sodio: 5,
-  //   carbohidratos: 5,
-  //   proteina: 5,
-  //   vitaminaA: 5,
-  //   vitaminaC: 5,
-  //   vitaminaD: 5,
-  //   calcio: 555,
-  //   hierro: 5,
-  //   potasio: 555,
-  // },
-  // {
-  //   cadena: "Receta3",
-  //   categoria: "Desayuno",
-  //   enlace:
-  //     "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
-  //   nombre: "Receta3",
-  //   imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
-  //   ingredientes:
-  //     "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
-  //   calorias: 5,
-  //   grasa: 5,
-  //   colesterol: 5,
-  //   sodio: 5,
-  //   carbohidratos: 5,
-  //   proteina: 5,
-  //   vitaminaA: 5,
-  //   vitaminaC: 5,
-  //   vitaminaD: 5,
-  //   calcio: 555,
-  //   hierro: 5,
-  //   potasio: 555,
-  // },
-  // {
-  //   cadena: "Receta4",
-  //   categoria: "Desayuno",
-  //   enlace:
-  //     "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
-  //   nombre: "Receta4",
-  //   imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
-  //   ingredientes:
-  //     "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
-  //   calorias: 5,
-  //   grasa: 5,
-  //   colesterol: 5,
-  //   sodio: 5,
-  //   carbohidratos: 5,
-  //   proteina: 5,
-  //   vitaminaA: 5,
-  //   vitaminaC: 5,
-  //   vitaminaD: 5,
-  //   calcio: 555,
-  //   hierro: 5,
-  //   potasio: 555,
-  // },
-  // {
-  //   cadena: "Receta5",
-  //   categoria: "Desayuno",
-  //   enlace:
-  //     "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
-  //   nombre: "Receta5",
-  //   imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
-  //   ingredientes:
-  //     "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
-  //   calorias: 5,
-  //   grasa: 5,
-  //   colesterol: 5,
-  //   sodio: 5,
-  //   carbohidratos: 5,
-  //   proteina: 5,
-  //   vitaminaA: 5,
-  //   vitaminaC: 5,
-  //   vitaminaD: 5,
-  //   calcio: 555,
-  //   hierro: 5,
-  //   potasio: 555,
-  // },
-  // {
-  //   cadena: "Receta7",
-  //   categoria: "Desayuno",
-  //   enlace:
-  //     "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
-  //   nombre: "Receta6",
-  //   imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
-  //   ingredientes:
-  //     "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
-  //   calorias: 5,
-  //   grasa: 5,
-  //   colesterol: 5,
-  //   sodio: 5,
-  //   carbohidratos: 5,
-  //   proteina: 5,
-  //   vitaminaA: 5,
-  //   vitaminaC: 5,
-  //   vitaminaD: 5,
-  //   calcio: 555,
-  //   hierro: 5,
-  //   potasio: 555,
-  // },
+  {
+    cadena: "Receta de Ejemplo",
+    categoria: "Desayuno",
+    enlace:
+      "https://medlineplus.gov/spanish/recetas/avena-de-la-noche-a-la-manana/",
+    nombre: "Receta1",
+    imagenURL: "https://medlineplus.gov/images/recipe_overnightoatmeal.jpg",
+    ingredientes:
+      "1 taza de avena tradicional (old fashioned) sin cocer | 1 taza de yogur descremado | 1/2 taza de leche descremada o de 1 porciento de grasa | 1/2 taza de arándanos frescos o congelados | 1/2 taza de trocitos de manzana (aproximadamente | 1/3 manzana mediana cortada en 3 de diámetro)",
+    calorias: 5,
+    grasa: 5,
+    colesterol: 5,
+    sodio: 5,
+    carbohidratos: 5,
+    proteina: 5,
+    vitaminaA: 5,
+    vitaminaC: 5,
+    vitaminaD: 5,
+    calcio: 555,
+    hierro: 5,
+    potasio: 555,
+  },
 ];
 
 function sendMessage() {
@@ -293,47 +191,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   cargaRecetas();
 });
 
-// async function cargarRecetaMain(cadenaTexto, numeroID) {
-//   const $tabs = document.querySelectorAll(".tab");
-
-//   let band = true;
-//   for (let i = 0; i < $tabs.length; i++) {
-//     const $tab = $tabs[i];
-//     const id = parseInt($tab.id.replace("tab-", ""));
-//     if (numeroID === id) {
-//       band = false;
-//       break;
-//     }
-//   }
-
-//   if (band) {
-//     console.log("No existe");
-//     // Si no existe una Tab
-//     try {
-//       const response = await fetch(
-//         `http://127.0.0.1:8000/obtener_ejemplo?cadena_texto=${cadenaTexto}`
-//       );
-//       const datos = await response.json();
-
-//       crearTab("tabs-head", datos.nombre, numeroID, datos);
-//       cargarJsonMain("main-content", datos);
-//       focusTab(numeroID);
-
-//       return datos;
-//     } catch (error) {
-//       console.error("Error al obtener datos:", error);
-//       return null;
-//     }
-//   } else {
-//     console.log("Existe");
-//     // Si existe una tab
-//     console.log(numeroID);
-//     console.log(arregloRecetasPreCargadas[numeroID]);
-//     cargarJsonMain("main-content", arregloRecetasPreCargadas[numeroID]);
-//     focusTab(numeroID);
-//   }
-// }
-
 function cargarRecetaMain(cadenaTexto, numeroID) {
   const $tabs = document.querySelectorAll(".tab");
 
@@ -403,6 +260,7 @@ function cargarJsonMain(idContenedor, recetaJson) {
             <ul id="ingredientes">
             </ul>
           </div>
+          <a class="boton-receta" href="${recetaJson.enlace}">Ir a ver la receta</a>
         </div>
       </div>`;
 
@@ -512,24 +370,42 @@ async function obtenerRecetaJson(cadenaTexto) {
   }
 }
 
-// obtenerRecetaJson("Dame una receta de arroz con carne");
+// async function obtenerRecetaJson(cadenaTexto) {
+//   const url = `http://127.0.0.1:8000/obtener_receta_json`;
+//   const arregloTitulos = extraerTitulosRecetas(arregloRecetasPreCargadas);
 
-// const cadenaTexto = "Dame una receta de arroz con carne";
-// fetch(
-//   `http://127.0.0.1:8000/obtener_receta_json?cadena_texto=${encodeURIComponent(
-//     cadenaTexto
-//   )}`
-// )
-//   .then((response) => {
+//   try {
+//     const response = await fetch(url, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ cadena: cadenaTexto, arreglo: arregloTitulos }),
+//     });
+
 //     if (!response.ok) {
-//       throw new Error("Error en la solicitud");
+//       throw new Error(`HTTP error! status: ${response.status}`);
 //     }
-//     return response.json(); // Parseamos la respuesta como JSON
-//   })
-//   .then((data) => {
-//     console.log("Receta obtenida:", data);
-//     // Aquí puedes manejar la respuesta (data) que obtuviste de FastAPI
-//   })
-//   .catch((error) => {
-//     console.error("Hubo un error con la solicitud:", error);
-//   });
+
+//     const datos = await response.json();
+//     crearHistoryMsg(arregloRecetasPreCargadas.length, datos);
+//     console.log(datos);
+//   } catch (error) {
+//     console.error("Error al obtener la receta:", error);
+//     return null; // O puedes manejar el error de otra manera
+//   }
+// }
+
+function extraerTitulosRecetas(arregloDeJsons) {
+  const nombresExtraidos = [];
+
+  for (const objeto of arregloDeJsons) {
+    if (objeto.hasOwnProperty("nombre")) {
+      nombresExtraidos.push(objeto["nombre"]);
+    }
+  }
+
+  return nombresExtraidos;
+}
+
+obtenerRecetaJson("HOla");

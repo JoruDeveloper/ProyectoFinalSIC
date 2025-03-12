@@ -110,6 +110,10 @@ class RespuestaAPIExterna(BaseModel):
     hierro: float
     potasio: int
 
+class Item(BaseModel):
+    cadena: str
+    arreglo: list[str]
+
 app = FastAPI()
 
 origins = [

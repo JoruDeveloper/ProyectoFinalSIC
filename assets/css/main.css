@@ -134,6 +134,12 @@ aside {
   justify-content: space-between;
 }
 
+.boton-receta {
+  padding: 4rem;
+  background-color: var(--color-nutr-facts);
+  color: var(--color-claro2);
+}
+
 /* NUTRI */
 
 .main-content {
